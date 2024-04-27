@@ -105,7 +105,6 @@
 - RPC: https://rpc-side-testnet.trusted-point.com:443
 - REST API: https://api-side-testnet.trusted-point.com:443
 - WSS: wss://rpc-side-testnet.trusted-point.com:443/websocket
-- gRPC: http://grpc-zero-gravity-testnet:9295
 - P2P Persistent Peer: 2006dc3a8c9f080322efbb568935619bb1cfef3c@peer-side-testnet.trusted-point.com:26644
 ---
 - State sync: [Guide](#state-sync)
