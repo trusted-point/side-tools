@@ -162,7 +162,7 @@ wget https://rpc-side-testnet.trusted-point.com/genesis.json -O $HOME/.side/conf
 ```
 ### 7. Add seeds and peers to the config.toml
 ```bash
-PEERS="43cb99189637d1e35b8f11c1580cff305157c94b@54.249.68.205:26656" && \
+PEERS="6aa033b16b4eea79195febbf87fd21f51b1a1bde@46.4.55.46:20656,43cb99189637d1e35b8f11c1580cff305157c94b@54.249.68.205:26656,6192a4888bafe5e87013b1812e2512380fdc2b40@138.201.51.154:30004" && \
 SEEDS="582dedd866dd77f25ac0575118cf32df1ee50f98@202.182.119.24:26656" && \
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.side/config/config.toml
 ```
