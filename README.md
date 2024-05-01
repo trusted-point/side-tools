@@ -135,7 +135,7 @@ go version
 ```bash
 git clone https://github.com/sideprotocol/sidechain.git
 cd sidechain
-git checkout v0.7.0
+git checkout v0.8.0
 make install
 sided version
 ```
@@ -143,7 +143,7 @@ sided version
 ```bash
 # Customize if you need
 echo 'export MONIKER="My_Node"' >> ~/.bash_profile
-echo 'export CHAIN_ID="side-testnet-3"' >> ~/.bash_profile
+echo 'export CHAIN_ID="S2-testnet-1"' >> ~/.bash_profile
 echo 'export WALLET_NAME="wallet"' >> ~/.bash_profile
 echo 'export RPC_PORT="26657"' >> ~/.bash_profile
 source $HOME/.bash_profile
@@ -162,8 +162,8 @@ wget https://rpc-side-testnet.trusted-point.com/genesis.json -O $HOME/.side/conf
 ```
 ### 7. Add seeds and peers to the config.toml
 ```bash
-PEERS="6e28e3ddfd18e29ee11bca911857524e116a9205@142.132.251.87:26656,03ac82c882d32286f25c9d1ed91762eeadcb14d9@65.109.53.24:12656,169332e1a5aad8e49fced765992201774a754cd0@95.216.27.29:34656,c8962c5fe2622e969399f98377e775147425cf3f@173.249.44.60:34656,3728e3957ffddf96dfb94f452d497a56c9fa593e@5.189.130.43:31656,650d77c5ae87c5a9139b7524d35be945c9b30662@65.109.30.35:45656,8ade23b2f144fa5132b9ec9547354926e62852d6@127.0.0.1:22653,8d8bf287dfd9ce7da209b4152f6dd4d4b146131c@23.88.105.251:26656,2159231e79d9ef2f4449e2dc058051b249911a03@86.48.3.91:22656,62681254a4e21617957126647cc0464ea8c3e245@185.197.194.75:26656,f9f33e95997933f77ee71c835105e045f8ac6402@37.60.240.206:45656,5e8e3993e1a2b5a98ed8e46a37b0895a08633da3@42.115.165.73:26656,dcb4494c545f450ba38d60cfcba6c92dc55ebef2@80.85.242.149:34656,31b9b80182fa378cb695218ee745f76c07f1bfb7@144.91.84.224:45656,453e8f4b904cc0b2f5b604247fa4e7ec0925da68@65.21.202.124:21656,c3121ca01e8ad3c42c9a0e882d25867f6bd43d5b@116.96.46.227:26656,d51e34a65ac18af0ba6fbdda7b6549e5b0d52e74@43.228.215.204:26656,183461e7b4bea8840a43ccfdca0a303781165262@95.217.58.91:34656,9653dac771d12ed7859ade9638bd41c6652daedb@95.217.160.137:36656,94bd0b5a02129690ceda24d05800722130a65309@95.217.7.211:45656,ec21b67d599bba2348c59a7c1378b6bcaa21fe4e@188.40.66.173:26356,1d1b9b1fc8eec746f110a0444ee018c78db6a6a2@94.156.117.230:656,a0d5b25fc5e97177ee37c583dabf06eb9324113e@109.199.121.191:17456,1a3704cdc527c56916a61f840e86013538e3e974@89.150.133.162:45656,6a8e9fb01fd0d70c0331ea6441c16ba1a1a836b3@161.97.125.255:26656,a4359194594c3b9288627cbecd5f848bbca34812@136.243.75.46:35156,996c8e0d0c331c19984c543f6a3ec8520131fb7e@95.164.3.79:34656,a22a3f65c984e9585b7b4df1f0c2805c3d1b922b@207.180.216.225:26656,a8fa7e768607235e5a750f51d1ea11b29285f10c@208.93.66.47:17456,090568980667d1eb93e1582e6364ed75af30d353@45.137.192.145:34656" && \
-SEEDS="" && \
+PEERS="43cb99189637d1e35b8f11c1580cff305157c94b@54.249.68.205:26656" && \
+SEEDS="582dedd866dd77f25ac0575118cf32df1ee50f98@202.182.119.24:26656" && \
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.side/config/config.toml
 ```
 ### 8. Change ports (Optional)
@@ -195,13 +195,15 @@ sed -i \
 ```
 ### 9. Configure prunning to save storage (Optional)
 ```bash
-sed -i.bak -e "s/^pruning *=.*/pruning = \"custom\"/" $HOME/.side/config/app.toml
-sed -i.bak -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" $HOME/.side/config/app.toml
-sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" $HOME/.side/config/app.toml
+sed -i \
+    -e "s/^pruning *=.*/pruning = \"custom\"/" \
+    -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" \
+    -e "s/^pruning-interval *=.*/pruning-interval = \"10\"/" \
+    "$HOME/.side/config/app.toml"
 ```
 ### 10. Set min gas price 
 ```bash
-sed -i "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0001uside\"/" $HOME/.side/config/app.toml
+sed -i "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.005uside\"/" $HOME/.side/config/app.toml
 ```
 ### 11. Enable indexer (Optional)
 ```bash
@@ -242,7 +244,7 @@ sided keys add $WALLET_NAME
 # You can add --recover flag to restore existing key instead of creating
 ```
 ### 15. Request tokens from the faucet
--> <a href="https://discord.gg/sideprotocol"><font size="4"><b><u>FAUCET</u></b></font></a> <-
+-> <a href="https://testnet.side.one/faucet"><font size="4"><b><u>FAUCET</u></b></font></a> <-
 
 ### 16. Check wallet balance
 Make sure your node is fully synced unless it won't work.
@@ -295,7 +297,7 @@ TRUST_HEIGHT=$((LATEST_HEIGHT - 1500)) && \
 TRUST_HASH=$(curl -s --max-time 3 --retry 2 --retry-connrefused "$RPC/block?height=$TRUST_HEIGHT" | jq -r .result.block_id.hash) && \
 
 if [ -n "$PEERS" ] && [ -n "$RPC" ] && [ -n "$LATEST_HEIGHT" ] && [ -n "$TRUST_HEIGHT" ] && [ -n "$TRUST_HASH" ]; then
-    sed -i.bak \
+    sed -i \
         -e "/\[statesync\]/,/^\[/{s/\(enable = \).*$/\1true/}" \
         -e "/^rpc_servers =/ s|=.*|= \"$RPC,$RPC\"|;" \
         -e "/^trust_height =/ s/=.*/= $TRUST_HEIGHT/;" \
@@ -338,7 +340,7 @@ sided status | jq .SyncInfo
 ```
 ### 7. Disable state sync
 ```bash
-sed -i.bak -e "/\[statesync\]/,/^\[/{s/\(enable = \).*$/\1false/}" $HOME/.side/config/app.toml
+sed -i -e "/\[statesync\]/,/^\[/{s/\(enable = \).*$/\1false/}" $HOME/.side/config/app.toml
 ```
 ## Download fresh addrbook.json
 
