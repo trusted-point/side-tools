@@ -105,7 +105,7 @@
 - RPC: https://rpc-side-testnet.trusted-point.com:443
 - REST API: https://api-side-testnet.trusted-point.com:443
 - WSS: wss://rpc-side-testnet.trusted-point.com:443/websocket
-- P2P Persistent Peer: 2006dc3a8c9f080322efbb568935619bb1cfef3c@peer-side-testnet.trusted-point.com:26644
+- P2P Persistent Peer: f7e01396b448f37da1177d212f56ad58fb4f2040@peer-side-testnet.trusted-point.com:26644
 ---
 - State sync: [Guide](#state-sync)
 - Fresh Snapshot: [URL](https://rpc-side-testnet.trusted-point.com/latest_snapshot.tar.lz4) / [Guide](#download-snapshot) **(Being updated every 10 hours)**
@@ -290,7 +290,7 @@ sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 ```
 ### 4. Setup required variables (One command)
 ```bash
-PEERS="2006dc3a8c9f080322efbb568935619bb1cfef3c@peer-side-testnet.trusted-point.com:26644" && \
+PEERS="f7e01396b448f37da1177d212f56ad58fb4f2040@peer-side-testnet.trusted-point.com:26644" && \
 RPC="https://rpc-side-testnet.trusted-point.com:443" && \
 LATEST_HEIGHT=$(curl -s --max-time 3 --retry 2 --retry-connrefused $RPC/block | jq -r .result.block.header.height) && \
 TRUST_HEIGHT=$((LATEST_HEIGHT - 1500)) && \
