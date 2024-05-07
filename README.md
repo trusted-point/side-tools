@@ -143,7 +143,7 @@ sided version
 ```bash
 # Customize if you need
 echo 'export MONIKER="My_Node"' >> ~/.bash_profile
-echo 'export CHAIN_ID="S2-testnet-1"' >> ~/.bash_profile
+echo 'export CHAIN_ID="S2-testnet-2"' >> ~/.bash_profile
 echo 'export WALLET_NAME="wallet"' >> ~/.bash_profile
 echo 'export RPC_PORT="26657"' >> ~/.bash_profile
 source $HOME/.bash_profile
